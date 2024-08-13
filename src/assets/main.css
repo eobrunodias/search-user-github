@@ -1,0 +1,24 @@
+:root {
+  --primary-color: #513dff;
+  --secondary-color: #0b0261;
+  --white-color: #9895f5;
+  --background-color: #000025;
+  --text-color: #f9f9f9;
+  --accent: #380542;
+}
+
+.theme-dark {
+  --primary-color: #513dff;
+  --secondary-color: #1300c4;
+  --background-color: #f9f9f9;
+  --text-color: #000025;
+  --accent: #ff0055;
+}
+
+.limited-text {
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
