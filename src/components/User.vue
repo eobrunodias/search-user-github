@@ -11,7 +11,7 @@ defineProps(["login", "name", "company", "bio", "followers", "following", "avata
     <div class="infos">
       <h2>{{ name }}</h2>
       <h3>{{ company }}</h3>
-      <p class="">{{ bio }}</p>
+      <p class="limited-text">{{ bio }}</p>
       <div>
         <span class="followers"><strong>Followers:</strong>{{ followers }}</span>
         <span class="following"><strong>Following:</strong>{{ following }}</span>
@@ -32,6 +32,25 @@ defineProps(["login", "name", "company", "bio", "followers", "following", "avata
 
   margin-bottom: 2rem;
   gap: 2rem;
+}
+
+@media (max-width: 800px) {
+  .container {
+    padding: 2rem 0;
+    /* margin: 0; */
+    display: flex;
+    flex-direction: column;
+
+    .infos {
+      display: none;
+    }
+
+    .image {
+      flex: 1;
+      padding: 0;
+      background-color: var(--secondary-color);
+    }
+  }
 }
 
 .infos {
@@ -60,7 +79,7 @@ defineProps(["login", "name", "company", "bio", "followers", "following", "avata
   }
 
   p {
-    margin-bottom: 2rem;
+    margin-bottom: 1rem;
   }
 
   span {

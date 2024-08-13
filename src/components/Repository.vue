@@ -51,6 +51,7 @@ article {
     text-align: center;
     margin-bottom: 1rem;
     color: var(--background-color);
+    line-height: 3rem;
   }
 
   p {
