@@ -18,7 +18,7 @@ The main page where you can search for GitHub users by entering their username. 
 
 The history page displays a list of previous user searches, allowing you to revisit profiles you've searched for before.
 
-![History Page](src/assets/images/screen-history.jpg)
+![History Page](src/assets/images/screen-history.png)
 
 ## ✔ Features
 
