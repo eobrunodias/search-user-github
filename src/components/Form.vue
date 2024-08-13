@@ -1,15 +1,11 @@
 <script setup lang="ts">
 import { ref } from "vue"
-import { useSearchHistory } from "../stores/useSearchHistory"
 
 const emit = defineEmits(["formSubmit", "update:modelValue"])
 const searchInput = ref("")
 
-const searchHistory = useSearchHistory()
-
-function handleSubmit(ev) {
+function handleSubmit(ev: Event) {
   ev.preventDefault()
-  searchHistory.pushToHistory(searchInput.value)
   emit("formSubmit", searchInput.value)
 }
 </script>
@@ -19,7 +15,7 @@ function handleSubmit(ev) {
     <input
       type="text"
       v-model="searchInput"
-      @input="$emit('update:modelValue', $event.target.value)"
+      @input="$emit('update:modelValue', $event.target!.value)"
       placeholder="Digite o nome do usuário."
     />
     <button type="submit">

@@ -1,13 +1,14 @@
 import { defineStore } from "pinia"
+import type { TypeUser } from "../components/Profile.vue"
 
 export const useSearchHistory = defineStore("searchHistory", {
   state: () => {
     return {
-      users: [] as string[]
+      users: [] as TypeUser[]
     }
   },
   actions: {
-    pushToHistory(username: string) {
+    pushToHistory(username: TypeUser) {
       this.users.unshift(username)
     }
   }

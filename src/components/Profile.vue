@@ -5,6 +5,10 @@ import Repository from "./Repository.vue"
 import type { Repo } from "./Repository.vue"
 import Form from "./Form.vue"
 
+import { useSearchHistory } from "@/stores/useSearchHistory"
+
+const searchHistory = useSearchHistory()
+
 const username = ref("")
 
 const state = reactive<TypeUser>({
@@ -18,7 +22,7 @@ const state = reactive<TypeUser>({
   repos: []
 })
 
-type TypeUser = {
+export type TypeUser = {
   login: string
   name: string
   bio: string
@@ -32,6 +36,21 @@ type TypeUser = {
 async function fetchGithubUser(searchInput: string) {
   const res = await fetch(`https://api.github.com/users/${searchInput}`)
   const { login, name, bio, company, followers, following, avatar_url } = await res.json()
+
+  const user: TypeUser = {
+    login,
+    name,
+    bio,
+    company,
+    followers,
+    following,
+    avatar_url,
+    repos: []
+  }
+
+  searchHistory.pushToHistory(user)
+
+  console.log(searchHistory.users)
 
   state.login = login
   state.name = name
@@ -81,7 +100,7 @@ const reposCountMessage = computed(() => {
     {{ reposCountMessage }}
   </h3>
 
-  <section class="repos" v-if="state.repos.length > 0">
+  <section class="repos" v-if="state.repos.length > 0 && username !== ''">
     <Repository
       v-for="repo in state.repos"
       :key="repo.id"
