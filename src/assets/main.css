@@ -21,3 +21,31 @@
   -webkit-box-orient: vertical;
   overflow: hidden;
 }
+
+a {
+  text-decoration: none;
+  color: white;
+}
+
+li {
+  & + & {
+    margin-left: 1.5rem;
+  }
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Sora", sans-serif;
+
+  color: var(--text-color);
+}
+
+body {
+  background-color: var(--background-color);
+}
+
+ul {
+  list-style: none;
+}

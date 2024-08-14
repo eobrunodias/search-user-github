@@ -37,7 +37,6 @@ defineProps(["login", "name", "company", "bio", "followers", "following", "avata
 @media (max-width: 800px) {
   .container {
     padding: 2rem 0;
-    /* margin: 0; */
     display: flex;
     flex-direction: column;
 
