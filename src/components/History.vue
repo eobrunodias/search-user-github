@@ -29,7 +29,6 @@ const handleCountRecords = computed(() => {
     <div class="history-container" v-for="(user, index) in searchHistory.users" :key="index">
       <div class="history-tab">
         <p>{{ user.recordedAt }}</p>
-        {{ console.log(user.recordedAt) }}
         <button class="delete-btn" @click="handleRemoveUser(index)">
           <img src="../assets/remove.svg" alt="" />
         </button>
