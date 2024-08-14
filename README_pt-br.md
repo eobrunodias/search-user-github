@@ -16,7 +16,7 @@ A página principal onde você pode pesquisar usuários do GitHub inserindo o no
 
 A página de histórico exibe uma lista de pesquisas anteriores de usuários, permitindo que você revisite os perfis que pesquisou antes.
 
-![History Page](src/assets/images/page-history.jpg)
+![History Page](src/assets/images/page-history.png)
 
 ## ✔ Features
 
