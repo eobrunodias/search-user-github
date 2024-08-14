@@ -4,7 +4,7 @@
   --white-color: #9895f5;
   --background-color: #000025;
   --text-color: #f9f9f9;
-  --accent: #380542;
+  --accent: #ff0040;
 }
 
 .theme-dark {
@@ -12,7 +12,7 @@
   --secondary-color: #1300c4;
   --background-color: #f9f9f9;
   --text-color: #000025;
-  --accent: #ff0055;
+  --accent: #ff0040;
 }
 
 .limited-text {
