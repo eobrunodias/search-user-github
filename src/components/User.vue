@@ -1,10 +1,25 @@
 <script setup lang="ts">
-defineProps(["login", "name", "company", "bio", "followers", "following", "avatar_url"])
+const props = defineProps([
+  "login",
+  "name",
+  "company",
+  "bio",
+  "followers",
+  "following",
+  "avatar_url",
+  "searchDate"
+])
+
+function openGithubProfile() {
+  if (props.login) {
+    window.open(`https://github.com/${props.login}`, "_blank")
+  }
+}
 </script>
 
 <template>
   <div class="container">
-    <div class="image">
+    <div class="image" @click="openGithubProfile">
       <img :src="avatar_url" />
       <strong>@{{ login }}</strong>
     </div>
@@ -12,7 +27,7 @@ defineProps(["login", "name", "company", "bio", "followers", "following", "avata
       <h2>{{ name }}</h2>
       <h3>{{ company }}</h3>
       <p class="limited-text">{{ bio }}</p>
-      <div>
+      <div class="spans">
         <span class="followers"><strong>Followers:</strong>{{ followers }}</span>
         <span class="following"><strong>Following:</strong>{{ following }}</span>
       </div>
@@ -41,13 +56,25 @@ defineProps(["login", "name", "company", "bio", "followers", "following", "avata
     flex-direction: column;
 
     .infos {
-      display: none;
+      font-size: 0.8rem;
+      padding: 1rem 6rem;
+
+      width: 90%;
+      align-items: center;
+      text-align: center;
     }
 
     .image {
-      flex: 1;
-      padding: 0;
-      background-color: var(--secondary-color);
+      padding: 1;
+      width: 90%;
+    }
+  }
+}
+
+@media (max-width: 550px) {
+  .container {
+    .infos {
+      padding: 1rem 2rem;
     }
   }
 }
@@ -106,6 +133,12 @@ defineProps(["login", "name", "company", "bio", "followers", "following", "avata
   text-align: center;
 
   max-height: 16rem;
+
+  &:hover {
+    transform: scale(1.06);
+    filter: brightness(1.1);
+    cursor: pointer;
+  }
 
   img {
     border-radius: 999px;

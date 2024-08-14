@@ -13,6 +13,8 @@ import Profile from "../components/Profile.vue"
   max-width: 80rem;
   margin: 0 auto;
 
+  min-height: 100vh;
+
   padding: 0 1rem;
 }
 </style>
