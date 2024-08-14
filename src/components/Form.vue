@@ -15,7 +15,9 @@ function handleSubmit(ev: Event) {
     <input
       type="text"
       v-model="searchInput"
-      @input="$emit('update:modelValue', $event.target!.value)"
+      @input="
+        ($event: Event) => emit('update:modelValue', ($event.target as HTMLInputElement).value)
+      "
       placeholder="Type the username."
     />
     <button type="submit">
