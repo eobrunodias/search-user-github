@@ -10,13 +10,13 @@ Pesquise usuários do GitHub pelo nome de usuário e visualize informações det
 
 A página principal onde você pode pesquisar usuários do GitHub inserindo o nome de usuário. Os resultados exibem as informações do perfil do usuário, incluindo seu avatar, biografia e repositórios públicos.
 
-![Home Page](./src/assets/images/screen-home.png)
+![Home Page](./src/assets/images/page-home.png)
 
 ### Histórico
 
 A página de histórico exibe uma lista de pesquisas anteriores de usuários, permitindo que você revisite os perfis que pesquisou antes.
 
-![History Page](src/assets/images/screen-history.jpg)
+![History Page](src/assets/images/page-history.jpg)
 
 ## ✔ Features
 
@@ -24,6 +24,11 @@ A página de histórico exibe uma lista de pesquisas anteriores de usuários, pe
 - 🗂 **Histórico de pesquisa**: Acompanhe os nomes de usuário pesquisados ​​anteriormente, com planos para salvar esse histórico localmente;
 - 🌐 **Integração de API**: Busque dados diretamente da API do GitHub para obter resultados em tempo real;
 - 💾 **Local Storage**: Salve o histórico de pesquisa mesmo após atualizar ou fechar o navegador.
+
+### New Features
+
+- 🗑️ **Remover Usuário do Histórico**: Permite remover um usuário do histórico com um único clique.
+- 📅 **Data de Pesquisa**: Registra a data e hora em que você pesquisou um usuário.
 
 ## 🛠 Tecnologias usadas
 

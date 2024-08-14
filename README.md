@@ -12,13 +12,13 @@ Search for GitHub users by username and view detailed information about their pr
 
 The main page where you can search for GitHub users by entering their username. The results display the user's profile information, including their avatar, bio, and public repositories.
 
-![Home Page](./src/assets/images/screen-home.png)
+![Home Page](./src/assets/images/page-home.png)
 
 ### History
 
 The history page displays a list of previous user searches, allowing you to revisit profiles you've searched for before.
 
-![History Page](src/assets/images/screen-history.png)
+![History Page](src/assets/images/page-history.png)
 
 ## ✔ Features
 
@@ -26,6 +26,11 @@ The history page displays a list of previous user searches, allowing you to revi
 - 🗂 **Search History**: Keep track of previously searched usernames, with plans to save this history locally.
 - 🌐 **API Integration**: Fetch data directly from the GitHub API for real-time results.
 - 💾 **Local Storage**: Save search history even after refreshing or closing the browser.
+
+### New Features
+
+- 🗑️ **Remove User of History**: Easily remove a user from the history with just one click.
+- 📅 **Search Date**: Records the date and time when you searched for a user.
 
 ## 🛠 Technologies Used
 
