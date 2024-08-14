@@ -16,9 +16,14 @@ function handleRemoveUser(index: number) {
 }
 
 const handleCountRecords = computed(() => {
-  return searchHistory.users.length > 0
-    ? `There are ${searchHistory.users.length} records in history`
-    : `There are no records in history`
+  const count = searchHistory.users.length
+  if (count === 0) {
+    return "There are no records in history"
+  } else if (count === 1) {
+    return "There is 1 record in history"
+  } else {
+    return `There are ${count} records in history`
+  }
 })
 </script>
 
