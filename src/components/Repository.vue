@@ -13,7 +13,7 @@ export interface Repo {
   <article>
     <h3 class="limited-text">{{ full_name }}</h3>
     <p class="limited-text">{{ description }}</p>
-    <a :href="html_url" target="_blank">Ver no GitHub</a>
+    <a :href="html_url" target="_blank">view on github</a>
   </article>
 </template>
 
@@ -51,7 +51,7 @@ article {
     text-align: center;
     margin-bottom: 1rem;
     color: var(--background-color);
-    line-height: 3rem;
+    line-height: 2rem;
   }
 
   p {

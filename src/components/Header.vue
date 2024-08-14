@@ -11,6 +11,7 @@
       </nav>
     </div>
   </header>
+  <div class="point">.</div>
 </template>
 
 <style scoped>
@@ -19,7 +20,16 @@ header {
   height: 6rem;
   display: flex;
 
+  position: fixed;
+  width: 100%;
+
+  z-index: 1000;
+
   margin-bottom: 2rem;
+}
+
+.point {
+  margin-bottom: 7rem;
 }
 
 span {

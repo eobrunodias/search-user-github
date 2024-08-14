@@ -10,6 +10,7 @@ import { useSearchHistory } from "@/stores/useSearchHistory"
 const searchHistory = useSearchHistory()
 
 const username = ref("")
+const reposRef = ref<Repo[]>([])
 
 const state = reactive<TypeUser>({
   login: "",
@@ -18,8 +19,7 @@ const state = reactive<TypeUser>({
   company: "",
   avatar_url: "",
   followers: "",
-  following: "",
-  repos: []
+  following: ""
 })
 
 export type TypeUser = {
@@ -30,7 +30,6 @@ export type TypeUser = {
   followers: string
   following: string
   avatar_url: string
-  repos: Repo[]
 }
 
 async function fetchGithubUser(searchInput: string) {
@@ -44,13 +43,10 @@ async function fetchGithubUser(searchInput: string) {
     company,
     followers,
     following,
-    avatar_url,
-    repos: []
+    avatar_url
   }
 
   searchHistory.pushToHistory(user)
-
-  console.log(searchHistory.users)
 
   state.login = login
   state.name = name
@@ -59,7 +55,6 @@ async function fetchGithubUser(searchInput: string) {
   state.followers = followers
   state.following = following
   state.avatar_url = avatar_url
-  state.repos = []
 
   await fetchUserRepositores(login)
 }
@@ -67,13 +62,13 @@ async function fetchGithubUser(searchInput: string) {
 async function fetchUserRepositores(login: string) {
   const res = await fetch(`https://api.github.com/users/${login}/repos`)
   const repos = await res.json()
-  state.repos = repos
+  reposRef.value = repos
 }
 
 const reposCountMessage = computed(() => {
-  return state.repos.length > 0
-    ? `${state.login} possui ${state.repos.length} repositórios públicos.`
-    : `${state.login} não possui nenhum repositório público.`
+  return reposRef.value.length > 0
+    ? `${state.login} has ${reposRef.value.length} public repositories.`
+    : `${state.login} does not have any public repository.`
 })
 </script>
 
@@ -81,7 +76,7 @@ const reposCountMessage = computed(() => {
   <Form @form-submit="fetchGithubUser" v-model="username" />
 
   <div class="empty-search" v-if="!username">
-    <p>Digite o nome do usuário na barra de pesquisa.</p>
+    <p>Type the username in the search bar.</p>
   </div>
 
   <div v-if="state.login && username !== ''">
@@ -100,9 +95,9 @@ const reposCountMessage = computed(() => {
     {{ reposCountMessage }}
   </h3>
 
-  <section class="repos" v-if="state.repos.length > 0 && username !== ''">
+  <section class="repos" v-if="reposRef.length > 0 && username !== ''">
     <Repository
-      v-for="repo in state.repos"
+      v-for="repo in reposRef"
       :key="repo.id"
       :description="repo.description"
       :full_name="repo.full_name"
