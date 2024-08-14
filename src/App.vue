@@ -1,49 +1,29 @@
 <script setup lang="ts">
 import { RouterLink, RouterView } from "vue-router"
 import Header from "./components/Header.vue"
+import Footer from "./components/Footer.vue"
+import { useSearchHistory } from "./stores/useSearchHistory"
+
+const searchHistory = useSearchHistory()
+
+searchHistory.loadFromLocalStorage()
 </script>
 
 <template>
-  <Header>
-    <li>
-      <RouterLink to="/">Home</RouterLink>
-    </li>
-    <li>
-      <RouterLink to="/history">History</RouterLink>
-    </li>
-  </Header>
+  <div class="app-container">
+    <Header>
+      <li>
+        <RouterLink to="/">Home</RouterLink>
+      </li>
+      <li>
+        <RouterLink to="/history">History</RouterLink>
+      </li>
+    </Header>
 
-  <RouterView />
+    <RouterView style="min-height: 100vh" />
 
-  <Footer />
+    <Footer />
+  </div>
 </template>
 
-<style>
-a {
-  text-decoration: none;
-  color: white;
-}
-
-li {
-  & + & {
-    margin-left: 1.5rem;
-  }
-}
-
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-  font-family: "Sora", sans-serif;
-
-  color: var(--text-color);
-}
-
-body {
-  background-color: var(--background-color);
-}
-
-ul {
-  list-style: none;
-}
-</style>
+<style scoped></style>

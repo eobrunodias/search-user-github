@@ -8,8 +8,24 @@ export const useSearchHistory = defineStore("searchHistory", {
     }
   },
   actions: {
+    loadFromLocalStorage() {
+      const storedUsers = localStorage.getItem("users")
+      if (storedUsers) {
+        this.users = JSON.parse(storedUsers)
+      }
+    },
+    removeUser(index: number) {
+      if (index > -1 && index < this.users.length) {
+        this.users.splice(index, 1)
+        this.saveLocalStorage()
+      }
+    },
     pushToHistory(username: TypeUser) {
       this.users.unshift(username)
+      this.saveLocalStorage()
+    },
+    saveLocalStorage() {
+      localStorage.setItem("users", JSON.stringify(this.users))
     }
   }
 })
