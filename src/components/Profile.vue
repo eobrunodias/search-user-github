@@ -40,6 +40,16 @@ async function fetchGithubUser(searchInput: string) {
     const { login, name, bio, company, followers, following, avatar_url } = await res.json()
 
     if (!res.ok) {
+      state.login = ""
+      state.name = ""
+      state.bio = ""
+      state.company = ""
+      state.followers = ""
+      state.following = ""
+      state.avatar_url = ""
+
+      reposRef.value = []
+
       return (errorMessage.value = `User not found. Type a valid username.`)
     } else {
       errorMessage.value = ""
