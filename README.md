@@ -27,6 +27,11 @@ The history page displays a list of previous user searches, allowing you to revi
 - 🌐 **API Integration**: Fetch data directly from the GitHub API for real-time results.
 - 💾 **Local Storage**: Save search history even after refreshing or closing the browser.
 
+### New Features
+
+- 🗑️ **Remove User of History**: Easily remove a user from the history with just one click.
+- 📅 **Search Date**: Records the date and time when you searched for a user.
+
 ## 🛠 Technologies Used
 
 ![TypeScript](https://img.shields.io/badge/TypeScript-3178C6?style=for-the-badge&logo=typescript&logoColor=white) ![Vue](https://img.shields.io/badge/vuejs-%2335495e.svg?style=for-the-badge&logo=vuedotjs&logoColor=%234FC08D) ![Vite](https://img.shields.io/badge/Vite-646CFF?style=for-the-badge&logo=vite&logoColor=white)

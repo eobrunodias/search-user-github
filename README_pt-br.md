@@ -25,6 +25,11 @@ A página de histórico exibe uma lista de pesquisas anteriores de usuários, pe
 - 🌐 **Integração de API**: Busque dados diretamente da API do GitHub para obter resultados em tempo real;
 - 💾 **Local Storage**: Salve o histórico de pesquisa mesmo após atualizar ou fechar o navegador.
 
+### New Features
+
+- 🗑️ **Remover Usuário do Histórico**: Permite remover um usuário do histórico com um único clique.
+- 📅 **Data de Pesquisa**: Registra a data e hora em que você pesquisou um usuário.
+
 ## 🛠 Tecnologias usadas
 
 ![TypeScript](https://img.shields.io/badge/TypeScript-3178C6?style=for-the-badge&logo=typescript&logoColor=white) ![Vue](https://img.shields.io/badge/vuejs-%2335495e.svg?style=for-the-badge&logo=vuedotjs&logoColor=%234FC08D) ![Vite](https://img.shields.io/badge/Vite-646CFF?style=for-the-badge&logo=vite&logoColor=white)
