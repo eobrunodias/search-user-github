@@ -11,6 +11,7 @@ const searchHistory = useSearchHistory()
 
 const username = ref("")
 const reposRef = ref<Repo[]>([])
+const errorMessage = ref("")
 
 const state = reactive<TypeUser>({
   login: "",
@@ -30,39 +31,56 @@ export type TypeUser = {
   followers: string
   following: string
   avatar_url: string
+  recordedAt?: string
 }
 
 async function fetchGithubUser(searchInput: string) {
-  const res = await fetch(`https://api.github.com/users/${searchInput}`)
-  const { login, name, bio, company, followers, following, avatar_url } = await res.json()
+  try {
+    const res = await fetch(`https://api.github.com/users/${searchInput}`)
+    const { login, name, bio, company, followers, following, avatar_url } = await res.json()
 
-  const user: TypeUser = {
-    login,
-    name,
-    bio,
-    company,
-    followers,
-    following,
-    avatar_url
-  }
+    if (!res.ok) {
+      return (errorMessage.value = `User not found. Type a valid username.`)
+    } else {
+      errorMessage.value = ""
+    }
 
-  searchHistory.pushToHistory(user)
+    const user: TypeUser = {
+      login,
+      name,
+      bio,
+      company,
+      followers,
+      following,
+      avatar_url
+    }
 
-  state.login = login
-  state.name = name
-  state.bio = bio
-  state.company = company
-  state.followers = followers
-  state.following = following
-  state.avatar_url = avatar_url
+    searchHistory.pushToHistory(user)
 
-  await fetchUserRepositores(login)
+    state.login = login
+    state.name = name
+    state.bio = bio
+    state.company = company
+    state.followers = followers
+    state.following = following
+    state.avatar_url = avatar_url
+
+    await fetchUserRepositores(login)
+  } catch (error) {}
+}
+
+function handleSearchDate() {
+  const date = Date.now()
+  return date
 }
 
 async function fetchUserRepositores(login: string) {
-  const res = await fetch(`https://api.github.com/users/${login}/repos`)
-  const repos = await res.json()
-  reposRef.value = repos
+  try {
+    const res = await fetch(`https://api.github.com/users/${login}/repos`)
+
+    const repos = await res.json()
+    reposRef.value = repos
+  } catch (error) {}
 }
 
 const reposCountMessage = computed(() => {
@@ -74,6 +92,10 @@ const reposCountMessage = computed(() => {
 
 <template>
   <Form @form-submit="fetchGithubUser" v-model="username" />
+
+  <div class="errorMessage" v-if="errorMessage">
+    <p>{{ errorMessage }}</p>
+  </div>
 
   <div class="empty-search" v-if="!username">
     <p>Type the username in the search bar.</p>
@@ -88,6 +110,7 @@ const reposCountMessage = computed(() => {
       :followers="state.followers"
       :following="state.following"
       :avatar_url="state.avatar_url"
+      :searchDate="handleSearchDate"
     />
   </div>
 
@@ -122,19 +145,23 @@ const reposCountMessage = computed(() => {
   padding: 1rem;
 }
 
-.repos {
-  margin-bottom: 2rem;
-}
-
 .empty-search,
-.not-found {
+.errorMessage {
   font-size: 1.2rem;
   text-align: center;
 }
 
-section {
+.repos {
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 1rem;
+
+  margin-bottom: 2rem;
+}
+
+@media (max-width: 800px) {
+  .repos {
+    grid-template-columns: 1fr;
+  }
 }
 </style>

@@ -27,9 +27,13 @@ const handleCountRecords = computed(() => {
 
   <div class="history-wrapper">
     <div class="history-container" v-for="(user, index) in searchHistory.users" :key="index">
-      <button class="delete-btn" @click="handleRemoveUser(index)">
-        <img src="../assets/trash.svg" alt="" />
-      </button>
+      <div class="history-tab">
+        <p>{{ user.recordedAt }}</p>
+        {{ console.log(user.recordedAt) }}
+        <button class="delete-btn" @click="handleRemoveUser(index)">
+          <img src="../assets/remove.svg" alt="" />
+        </button>
+      </div>
       <User
         class="user"
         :key="index"
@@ -52,19 +56,28 @@ h3 {
   margin-bottom: 2rem;
 }
 
-.delete-btn {
-  background-color: var(--secondary-color);
+.history-tab {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: rgb(4, 0, 66);
+  padding: 0.7rem 0;
   border-radius: 10px 10px 0 0;
-  padding: 1rem 0 0 0;
-  font-size: 1rem;
 
-  border: none;
+  p {
+    margin: 0 2rem;
+  }
 
-  img {
-    height: 1.9rem;
-    width: 1.9rem;
+  .delete-btn {
+    margin: 0 2rem;
+    border: none;
     background-color: transparent;
-    cursor: pointer;
+
+    img {
+      height: 1.9rem;
+      width: 1.9rem;
+      cursor: pointer;
+    }
   }
 }
 

@@ -20,8 +20,9 @@ export const useSearchHistory = defineStore("searchHistory", {
         this.saveLocalStorage()
       }
     },
-    pushToHistory(username: TypeUser) {
-      this.users.unshift(username)
+    pushToHistory(user: TypeUser) {
+      const currentDate = `${new Date().toLocaleString()}`.replace(", ", " | ")
+      this.users.unshift({ ...user, recordedAt: currentDate })
       this.saveLocalStorage()
     },
     saveLocalStorage() {
