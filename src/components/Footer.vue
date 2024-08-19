@@ -2,7 +2,7 @@
   <header>
     <div class="wrapper">
       <div></div>
-      <a href="https:/github.com/eobrunodias">by | <span>eobrunodias 💻 </span></a>
+      <a href="https://github.com/eobrunodias">by | <span>eobrunodias 💻 </span></a>
     </div>
   </header>
 </template>
